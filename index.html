@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+
+        }
+
+        .container {
+            border: 2px solid;
+            border-radius: 32px;
+            margin-top: 95px;
+
+        }
+
+        #display {
+            width: 95%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            border-radius: 32px;
+            border: none;
+            background-color: rgb(14, 14, 14);
+            margin: 5px;
+            color: rgb(245, 242, 242);
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: xx-large;
+            font-weight: bold;
+
+
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 5px;
+            padding: 8px;
+            text-align: center;
+            justify-items: center;
+
+
+        }
+
+        buttons {
+            border: 2px solid;
+            border-radius: 56px;
+            width: 100%;
+            font-size: xx-large;
+            font-weight: bold;
+            background-color: rgb(42, 40, 40);
+            border: none;
+            color: white;
+            height: 62px;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            cursor: pointer;
+
+
+        }
+
+        .clear {
+            grid-column: span 2;
+            border: 2px solid;
+            border-radius: 32px;
+            text-align: center;
+            width: 100%;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: xx-large;
+            font-weight: bold;
+            border: none;
+        }
+
+        .zero {
+            grid-column: span 2;
+            border: 2px solid;
+            border-radius: 32px;
+            text-align: center;
+            width: 100%;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: xx-large;
+            font-weight: bold;
+            border: none;
+
+        }
+
+        .equal {
+            border: 2px solid;
+            border-radius: 32px;
+            text-align: center;
+            width: 100%;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: xx-large;
+            font-weight: bold;
+            border: none;
+            color: white;
+        }
+
+        .orange {
+            background-color: rgb(255, 174, 0);
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <input type="text" id="display" disabled>
+            <div class="buttons">
+                <buttons class="clear" onclick="clearscreen()">C</buttons>
+                <buttons onclick="todisplay('%')">%</buttons>
+                <buttons class="orange" onclick="todisplay('/')">/</buttons>
+                <buttons onclick="todisplay('7')">7</buttons>
+                <buttons onclick="todisplay('8')">8</buttons>
+                <buttons onclick="todisplay('9')">9</buttons>
+                <buttons class="orange" onclick="todisplay('*')">*</buttons>
+                <buttons onclick="todisplay('4')">4</buttons>
+                <buttons onclick="todisplay('5')">5</buttons>
+                <buttons onclick="todisplay('6')">6</buttons>
+                <buttons class="orange" onclick="todisplay('-')">-</buttons>
+                <buttons onclick="todisplay('1')">1</buttons>
+                <buttons onclick="todisplay('2')">2</buttons>
+                <buttons onclick="todisplay('3')">3</buttons>
+                <buttons class="orange" onclick="todisplay('+')">+</buttons>
+                <buttons class="zero" onclick="todisplay('0')">0</buttons>
+                <buttons onclick="todisplay('.')">.</buttons>
+                <button class="equal orange" onclick="calc()">=</button>
+            </div>
+            <script>
+                function todisplay(value) {
+                    document.getElementById('display').value += value;
+                }
+                function clearscreen(){
+                    document.getElementById('display').value = '';
+                }
+                function calc() {
+                    try {
+                        let result = eval(document.getElementById('display').value);
+                        document.getElementById('display').value = result;
+                    } catch (error) {
+                        document.getElementById('display').value = 'Error';
+                    }
+                }
+            </script>
+
+        </div>
+    </main>
+</body>
+
+</html>
